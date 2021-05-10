@@ -5,6 +5,28 @@
     <title></title>
   </head>
   <body>
+    
+    <div class="form-container">
+      <form id="create-recipe-form">
+        <h3>Create a new recipe!</h3>
+        <input id="input-name" type="text" name="title" value="" placeholder="Enter recipe name" class="input-text">
+        <br><br>
+        <textarea id="input-directions" name="directions" value="" rows="8" cols="80" placeholder="Enter Directions"></textarea>
+        <br><br>
+        <select id="categories" name="categories">
+          <option value="1">Appetizer</option>
+          <option value="2">Breakfast</option>
+          <option value="3">Entree</option>
+          <option value="4">Soup and Stew</option>
+          <option value="5">Dessert</option>
+          </select>
+          <br><br>
+
+          <input id="create-button" type="submit" name="submit" value="Create New Recipe">
+      </form>
+    </div>
+    
+    
     <div id='recipes-container'>
         
     </div>
