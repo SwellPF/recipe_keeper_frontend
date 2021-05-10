@@ -29,10 +29,29 @@ document.addEventListener('DOMContentLoaded', () => {
      e.preventDefault()
      const nameInput = document.querySelector('#input-name').value
      const directionsInput = document.querySelector('#input-directions').value
-     const categoryId = parseInt(document.querySelector('#categories').value)
+     const categoryId = parseInt(document.querySelector('#categories').value);
      postRecipe(nameInput, directionsInput, categoryId)
  }
 
  function postRecipe(name, directions, category_id){
-     console.log(name, directions, category_id);
+     
+     let bodyData = {name, directions, category_id}
+     fetch(endPoint, {
+         method: "POST",
+         headers: {"Content-Type": "application/json"},
+         body: JSON.stringify(bodyData)
+     })
+     .then(response => response.json())
+     .then(recipe => {
+         const recipeData = recipe.data.attributes
+         debugger
+         const recipeMarkup = `
+         <div data-id=${recipe.id}>
+         <h3>${recipeData.name}</h3>
+         <p>${recipeData.category.name}</p>
+         <button data-id=${recipeData.id}>Show Recipe</button>
+         </div>
+         <br><br>`;
+    document.querySelector('#recipes-container').innerHTML += recipeMarkup
+     })
  }
