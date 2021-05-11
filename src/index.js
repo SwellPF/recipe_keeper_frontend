@@ -43,13 +43,13 @@ document.addEventListener('DOMContentLoaded', () => {
      })
      .then(response => response.json())
      .then(recipe => {
-         const recipeData = recipe.data.attributes
-         debugger
+        console.log(recipe);
+        //  const recipeData = recipe.data.attributes
          const recipeMarkup = `
          <div data-id=${recipe.id}>
-         <h3>${recipeData.name}</h3>
-         <p>${recipeData.category.name}</p>
-         <button data-id=${recipeData.id}>Show Recipe</button>
+         <h3>${recipe.name}</h3>
+         <p>${recipe.category_id}</p>
+         <button data-id=${recipe.id}>Show Recipe</button>
          </div>
          <br><br>`;
     document.querySelector('#recipes-container').innerHTML += recipeMarkup
