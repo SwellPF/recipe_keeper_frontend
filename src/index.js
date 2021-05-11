@@ -5,6 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let createRecipeForm = document.querySelector('#create-recipe-form')
     createRecipeForm.addEventListener('submit', (e) => createFormHandler(e))
+
+    let createIngredientField = document.querySelector('#add-ingredient-button')
+    createIngredientField.addEventListener('click', (e) => addIngredientField(e))
 });
     
  function getRecipes(){   
@@ -46,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
      })
      .then(response => response.json())
      .then(recipe => {
+        debugger
         console.log(recipe);
         //  const recipeData = recipe.data.attributes
          const recipeMarkup = `
@@ -71,3 +75,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
  }
  
+
+ function addIngredientField(e){
+    e.preventDefault(); 
+    console.log(e);
+    // debugger
+    const ingredientContainerEl = document.getElementById("ingredient-container");
+    const ingredientCounter = ingredientContainerEl.childElementCount;    
+    
+    const newIngredientField = document.createElement('div');
+    newIngredientField.innerHTML = 
+    `<input id="ingredient[2]" type="text" name="ingredient[2]" value="" placeholder="Enter ingredient here" class="input-text"><br>`
+    ingredientContainerEl.appendChild(newIngredientField);
+ }
