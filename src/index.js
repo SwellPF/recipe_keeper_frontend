@@ -16,12 +16,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div data-id=${recipe.id}>
                 <h3>${recipe.attributes.name}</h3>
                 <p>Category: ${recipe.attributes.category.name}</p>
-                <button data-id'${recipe.id}>View Recipe</button>
+                <button class="delete-btn" data-id=${recipe.id}>Delete Recipe</button>
                 </div>
                 <br><br>`;
 
         document.querySelector('#recipes-container').innerHTML += recipeMarkup
     })
+    const deleteButtons = document.querySelectorAll(".delete-btn")
+    deleteButtons.forEach((btn) => btn.addEventListener("click", deleteRecipe));
+    
 })
  }
 
@@ -55,3 +58,16 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#recipes-container').innerHTML += recipeMarkup
      })
  }
+
+ function deleteRecipe(e){
+        const {id} = e.target.dataset;
+        fetch(`http://localhost:3000/api/v1/recipes/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            e.target.parentElement.remove();
+            // console.log(e.target.parentElement);
+        });
+ }
+ 
