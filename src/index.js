@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
  function postRecipe(name, directions, category_id, ingredientList){
      let bodyData = {name, directions, category_id, ingredientList}
+     debugger
      fetch(endPoint, {
          method: "POST",
          headers: {"Content-Type": "application/json"},
