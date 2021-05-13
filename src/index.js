@@ -1,11 +1,9 @@
 const endPoint = "http://localhost:3000/api/v1/recipes"
+let createRecipeForm = document.querySelector('#create-recipe-form')
+createRecipeForm.addEventListener('submit', (e) => createFormHandler(e))
 
 document.addEventListener('DOMContentLoaded', () => {
     getRecipes()
-
-    let createRecipeForm = document.querySelector('#create-recipe-form')
-    createRecipeForm.addEventListener('submit', (e) => createFormHandler(e))
-
     let createIngredientField = document.querySelector('#add-ingredient-button')
     createIngredientField.addEventListener('click', (e) => addIngredientField(e))
 });
@@ -54,7 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const newRecipe = new Recipe(recipe)
         // debugger
         document.querySelector('#recipes-container').innerHTML += newRecipe.renderIndexRecipe();
-     })
+        createRecipeForm.reset();
+    })
     
  }
 
