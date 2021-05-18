@@ -19,7 +19,7 @@ This application was built as my JavaScript project for Flatiron School.
 
 ## Setup
 
-### Clone the Repository
+### Clone the Repositories
 ```
 git clone git@github.com:swellpf/recipe_keeper_frontend.git
 git clone git@github.com:swellpf/recipe_keeper_backend.git
@@ -44,9 +44,9 @@ rails db:create db:migrate db:seed
 ```
 ### Start Rails server
 ```
-rails s
+Open a terminal window and launch the Rails server using rails s.
 ```
-And now you can visit the site with the URL http://localhost:3000
+Within a terminal window, navigate to the recipe_keeper_frontend directory and open index.html.
 
 ## Features
 List of features ready and TODOs for future development
