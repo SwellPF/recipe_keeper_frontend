@@ -27,13 +27,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const nameInput = document.querySelector('#input-name').value
     const directionsInput = document.querySelector('#input-directions').value
     const categoryId = parseInt(document.querySelector('#categories').value);
-    ingredientList = [];
+    let ingredientList = [];
     const ingredientInputs = Array.from(document.getElementsByClassName('ingredient-entry'))
     // debugger
     ingredientInputs.forEach(ingredient => {
     //    console.log(ingredient.value);
-       ingredientList.push(ingredient.value)});
-       ingredients = ingredientList.join('^');
+    ingredientList.push(ingredient.value)});
+    let ingredients = ingredientList.join('^');
     postRecipe(nameInput, directionsInput, categoryId, ingredients)
 }
 
