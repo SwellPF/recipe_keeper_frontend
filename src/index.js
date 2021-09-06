@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('#recipes-container').innerHTML += newRecipe.renderIndexRecipe();
             })
     
+  
     const deleteButtons = document.querySelectorAll(".delete-btn")
     deleteButtons.forEach((btn) => btn.addEventListener("click", deleteRecipe));
     })
@@ -29,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const categoryId = parseInt(document.querySelector('#categories').value);
     let ingredientList = [];
     const ingredientInputs = Array.from(document.getElementsByClassName('ingredient-entry'))
-    // debugger
+     debugger
     ingredientInputs.forEach(ingredient => {
     //    console.log(ingredient.value);
     ingredientList.push(ingredient.value)});
@@ -40,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
  function postRecipe(name, directions, category_id, ingredients){
      let bodyData = {name, directions, category_id, ingredients}
       //debugger
+      console.log('a')
      fetch(endPoint, {
          method: "POST",
          headers: {"Content-Type": "application/json"},
@@ -47,13 +49,15 @@ document.addEventListener('DOMContentLoaded', () => {
      })
      .then(response => response.json())
      .then(recipe => {
+         console.log('b')
         // console.log(recipe);
         recipe = recipe.data
         const newRecipe = new Recipe(recipe)
         // debugger
-        document.querySelector('#recipes-container').innerHTML += newRecipe.renderIndexRecipe();
+        document.querySelector('#recipes-container').insertAdjacentHTML("beforeend",newRecipe.renderIndexRecipe());
         createRecipeForm.reset();
     })
+    console.log('c')
     
  }
 
@@ -69,6 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
  }
  
+
 
  function addIngredientField(e){
     e.preventDefault(); 
