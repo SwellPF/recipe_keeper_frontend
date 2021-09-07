@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
      .then(response => response.json())
      .then(recipes => {
         recipes.data.forEach(recipe => {
+            console.log(recipe);
             let newRecipe = new Recipe(recipe);
             document.querySelector('#recipes-container').innerHTML += newRecipe.renderIndexRecipe();
             })
@@ -41,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
  function postRecipe(name, directions, category_id, ingredients){
      let bodyData = {name, directions, category_id, ingredients}
       //debugger
-      console.log('a')
      fetch(endPoint, {
          method: "POST",
          headers: {"Content-Type": "application/json"},
@@ -49,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
      })
      .then(response => response.json())
      .then(recipe => {
-         console.log('b')
         // console.log(recipe);
         recipe = recipe.data
         const newRecipe = new Recipe(recipe)
@@ -57,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('#recipes-container').insertAdjacentHTML("beforeend",newRecipe.renderIndexRecipe());
         createRecipeForm.reset();
     })
-    console.log('c')
     
  }
 
